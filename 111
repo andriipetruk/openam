@@ -1,0 +1,28 @@
+         rewrite_by_lua '
+            cjson = require "cjson"
+            local headers = ngx.req.get_headers()
+            local request_uri = ngx.var.request_uri;
+                     if headers["Cookie"] then
+               local cookies = {}
+               for k, v in string.gmatch(headers["Cookie"], "([^=]+)=([^;]+);?%s*") do
+                 cookies[k] = v
+               end
+              roles = {}
+              ---for role in cookies["HTTP_ou"]:gmatch("([^|]*)") do table.insert(roles, role) end
+             end
+
+             index = 1
+             out=""
+            --- repeat
+            ---   out=out..roles[index]
+            ---   index=index+1
+            --- until not roles[index]
+            ---if ngx.var.request_method == "GET" then
+             ---  if string.find(ngx.var.uri, "^/marathon/v2/groups$") then
+                   ---if ngx.var.args ~= nil then
+                   ---ngx.redirect
+                   ---ngx.req.set_uri("/marathon/v2/groups/"..role.."?"..ngx.var.args, true)
+                   ---ngx.req.set_uri("/marathon/v2/groups/app-group/"..role, true)
+                   ---else
+              --- end
+            ---end';
